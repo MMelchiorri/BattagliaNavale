@@ -12,7 +12,7 @@ public class Game {
 		Player player = new Player(playerGameBoard,true);
 		Player bot = new Player(cpuGameBoard,false);
 		
-		bot.setGameBoard(cpuGameBoard, false);
+		bot.setGameBoard(cpuGameBoard, true);
 		bot.getGameBoard(cpuGameBoard);
 		
 		System.out.println("-----------------------------------------");
