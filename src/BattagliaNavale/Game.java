@@ -15,12 +15,15 @@ public class Game {
 		bot.setGameBoard(cpuGameBoard, true);
 		bot.getGameBoard(cpuGameBoard);
 		
-		System.out.println("-----------------------------------------");
-		
+		System.out.println("-----------------------------------------------------");
+				
 		player.getGameBoard(playerGameBoard);
+		player.setGameBoard(playerGameBoard,false);
 	}
 		
 		
 	
 
 }
+
+
