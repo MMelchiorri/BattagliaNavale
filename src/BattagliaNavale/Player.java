@@ -62,18 +62,17 @@ public class Player {
 	}
 	
 	public void setGameBoard(GameBoard gameBoard,boolean bot) {
+		int size;
 		
 		for (Navi boat : Navi.values()) {
-		    System.out.println(boat);
 		    boolean value = new Random().nextBoolean(); // true Horizontal false Vertical
 		    switch(boat) {
 		    	case PO:
-		    		int size = size_of_portaerei;
+		    		size = size_of_portaerei;
 		    		if(value) {
 			    		int rand_column = new Random().nextInt(10-size);
 			    		int rand_row = new Random().nextInt(9);
-			    		System.out.println("sono in orizzontale");
-			    		System.out.println(rand_row);
+			    		System.out.println("sono in orizzontale PO");
 			    		checkAvailability(rand_row,rand_column,size_of_portaerei,'H');
 			    		for(int i=0;i<size;i++) {
 			    			gameBoard.setElementGameBoard(rand_row, rand_column, "PO");
@@ -83,7 +82,9 @@ public class Player {
 			    		int rand_row = new Random().nextInt(10-size);
 			    		int rand_column = new Random().nextInt(9);
 			    		System.out.println("sono in verticale");
+			    		checkAvailability(rand_row,rand_column,size_of_portaerei,'V');
 			    		System.out.println(rand_row);
+			    		if(!)
 			    		for(int i=0;i<size;i++) {
 			    			gameBoard.setElementGameBoard(rand_row, rand_column, "PO");
 			    			rand_row++;
@@ -93,7 +94,109 @@ public class Player {
 		    	number_of_portaerei--;
 		    	break;
 		    	case CO:
-		    		
+		    		size = size_of_corazzate;
+		    		if(value) {
+			    		int rand_column = new Random().nextInt(10-size);
+			    		int rand_row = new Random().nextInt(9);
+			    		System.out.println("sono in orizzontale");
+			    		System.out.println(rand_row);
+			    		checkAvailability(rand_row,rand_column,size_of_corazzate,'H');
+			    		for(int i=0;i<size;i++) {
+			    			gameBoard.setElementGameBoard(rand_row, rand_column, "CO");
+			    			rand_column++;
+			    		}
+		    		}else {
+			    		int rand_row = new Random().nextInt(10-size);
+			    		int rand_column = new Random().nextInt(9);
+			    		System.out.println("sono in verticale");
+			    		System.out.println(rand_row);
+			    		checkAvailability(rand_row,rand_column,size_of_corazzate,'V');
+			    		for(int i=0;i<size;i++) {
+			    			gameBoard.setElementGameBoard(rand_row, rand_column, "CO");
+			    			rand_row++;
+			    		}
+		    			
+		    		}
+		    		number_of_corazzate--;
+		    		break;
+		    	case CR:
+		    		size = size_of_crociere;
+		    		if(value) {
+			    		int rand_column = new Random().nextInt(10-size);
+			    		int rand_row = new Random().nextInt(9);
+			    		System.out.println("sono in orizzontale");
+			    		System.out.println(rand_row);
+			    		checkAvailability(rand_row,rand_column,size_of_crociere,'H');
+			    		for(int i=0;i<size;i++) {
+			    			gameBoard.setElementGameBoard(rand_row, rand_column, "CR");
+			    			rand_column++;
+			    		}
+		    		}else {
+			    		int rand_row = new Random().nextInt(10-size);
+			    		int rand_column = new Random().nextInt(9);
+			    		System.out.println("sono in verticale");
+			    		System.out.println(rand_row);
+			    		checkAvailability(rand_row,rand_column,size_of_crociere,'V');
+			    		for(int i=0;i<size;i++) {
+			    			gameBoard.setElementGameBoard(rand_row, rand_column, "CR");
+			    			rand_row++;
+			    		}
+		    			
+		    		}
+		    	number_of_crociere--;
+		    	break;
+		    	case SO:
+		    		size = size_of_sottomarini;
+		    		if(value) {
+			    		int rand_column = new Random().nextInt(10-size);
+			    		int rand_row = new Random().nextInt(9);
+			    		System.out.println("sono in orizzontale");
+			    		System.out.println(rand_row);
+			    		checkAvailability(rand_row,rand_column,size_of_sottomarini,'H');
+			    		for(int i=0;i<size;i++) {
+			    			gameBoard.setElementGameBoard(rand_row, rand_column, "SO");
+			    			rand_column++;
+			    		}
+		    		}else {
+			    		int rand_row = new Random().nextInt(10-size);
+			    		int rand_column = new Random().nextInt(9);
+			    		System.out.println("sono in verticale");
+			    		System.out.println(rand_row);
+			    		checkAvailability(rand_row,rand_column,size_of_sottomarini,'V');
+			    		for(int i=0;i<size;i++) {
+			    			gameBoard.setElementGameBoard(rand_row, rand_column, "SO");
+			    			rand_row++;
+			    		}
+		    			
+		    		}
+		    	number_of_sottomarini--;
+		    	break;
+		    	case NA:
+		    		size = size_of_assalto;
+		    		if(value) {
+			    		int rand_column = new Random().nextInt(10-size);
+			    		int rand_row = new Random().nextInt(9);
+			    		System.out.println("sono in orizzontale");
+			    		System.out.println(rand_row);
+			    		checkAvailability(rand_row,rand_column,size_of_assalto,'H');
+			    		for(int i=0;i<size;i++) {
+			    			gameBoard.setElementGameBoard(rand_row, rand_column, "NA");
+			    			rand_column++;
+			    		}
+		    		}else {
+			    		int rand_row = new Random().nextInt(10-size);
+			    		int rand_column = new Random().nextInt(9);
+			    		System.out.println("sono in verticale");
+			    		System.out.println(rand_row);
+			    		checkAvailability(rand_row,rand_column,size_of_assalto,'V');
+			    		for(int i=0;i<size;i++) {
+			    			gameBoard.setElementGameBoard(rand_row, rand_column, "NA");
+			    			rand_row++;
+			    		}
+		    			
+		    		}
+		    	number_of_assalto--;
+		    	break;
 
 		    		
 		    
