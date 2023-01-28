@@ -201,7 +201,7 @@ public class Player {
 
                                 }
                                 if (letter.equals("L")) {
-                                    int row = 0;
+                                    int row = 9;
                                     for (int i = 0; i < size_of_portaerei; i++) {
                                         gameBoard.setElementGameBoard(row, column, "PO");
                                         row++;
@@ -437,7 +437,7 @@ public class Player {
 
                                 }
                                 if (letter.equals("L")) {
-                                    int row = 0;
+                                    int row = 9;
                                     for (int i = 0; i < size_of_corazzate; i++) {
                                         gameBoard.setElementGameBoard(row, column, "CO");
                                         row++;
@@ -667,7 +667,7 @@ public class Player {
                                     }
                                 }
                                 if (letter.equals("L")) {
-                                    int row = 0;
+                                    int row = 9;
                                     for (int i = 0; i < size_of_crociere; i++) {
                                         gameBoard.setElementGameBoard(row, column, "CR");
                                         row++;
@@ -899,7 +899,7 @@ public class Player {
 
                                 }
                                 if (letter.equals("L")) {
-                                    int row = 0;
+                                    int row = 9;
                                     for (int i = 0; i < size_of_sottomarini; i++) {
                                         gameBoard.setElementGameBoard(row, column, "SO");
                                         row++;
@@ -1131,7 +1131,7 @@ public class Player {
 
                                 }
                                 if (letter.equals("L")) {
-                                    int row = 0;
+                                    int row = 9;
                                     for (int i = 0; i < size_of_assalto; i++) {
                                         gameBoard.setElementGameBoard(row, column, "NA");
                                         row++;
@@ -1221,7 +1221,7 @@ public class Player {
                                 if (letter.equals("L")) {
                                     int row = 9;
                                     for (int j1 = 0; j1 < size_of_sottomarini; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "SO");
+                                        gameBoard.setElementGameBoard(row, column, "NA");
                                         column++;
                                     }
                                     this.gameBoard.getGameBoard();
