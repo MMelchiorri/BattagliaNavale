@@ -1,5 +1,8 @@
 package BattagliaNavale;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -22,7 +25,7 @@ public class Player {
     public static int size_of_corazzate = 4;
     public static int size_of_crociere = 3;
     public static int size_of_sottomarini = 3;
-    public static int size_of_assalto = 1;
+    public static int size_of_assalto = 2;
 
     //Number of ships
     public static int number_of_portaerei = 1;
@@ -42,9 +45,9 @@ public class Player {
         gameBoard.getGameBoard();
     }
 
-    public boolean checkAvailability(int row, int column, int size, char HIV) {
+    public boolean checkAvailability(int row, int column, int size, String direction) {
 
-        if (HIV == 'V') {
+        if (direction.equals("V")) {
             for (int i = 0; i < size; i++) {
                 if (this.gameBoard.gameBoard[row][column] != "~~") {
                     return false;
@@ -66,1173 +69,208 @@ public class Player {
 
         }
     }
-
-    public void setGameBoard(GameBoard gameBoard, boolean bot) {
-        int size;
-
-        for (Navi boat: Navi.values()) {
-            boolean value = new Random().nextBoolean(); // true Horizontal false Vertical
-            switch (boat) {
-                case PO:
-                    for (int j = 0; j <= number_of_portaerei; j++) {
-                        size = size_of_portaerei;
-                        if (bot) {
-                            System.out.println("SONO IN PO");
-
-                            //bot player
-                            if (value) {
-                                int rand_column = new Random().nextInt(9 - size);
-                                int rand_row = new Random().nextInt(9);
-                                if (!checkAvailability(rand_row, rand_column, size_of_portaerei, 'H')) {
-
-                                } else {
-                                    for (int i = 0; i < size; i++) {
-                                        gameBoard.setElementGameBoard(rand_row, rand_column, "PO");
-                                        rand_column++;
-                                    }
-                                    //this.gameBoard.getGameBoard();
-
-                                }
-
-                            } else {
-                                int rand_row = new Random().nextInt(9 - size);
-                                int rand_column = new Random().nextInt(9);
-                                if (!checkAvailability(rand_row, rand_column, size_of_portaerei, 'V')) {
-
-                                } else {
-                                    for (int i = 0; i < size; i++) {
-                                        gameBoard.setElementGameBoard(rand_row, rand_column, "PO");
-                                        rand_row++;
-                                    }
-                                    //this.gameBoard.getGameBoard();
-                                }
-                            }
-                        } else {
-                            // human player
-                            Scanner scanner = new Scanner(System.in);
-                            System.out.println("Insert H for Horizontal or V for Vertical");
-                            String position = scanner.nextLine();
-                            if (position.equals("V")) {
-                                System.out.println("Insert the number of row");
-                                String letter = scanner.nextLine();
-                                System.out.println("Insert the column");
-                                int column = scanner.nextInt();
-                                if (letter.equals("A")) {
-                                    int row = 0;
-                                    for (int i = 0; i < size_of_portaerei; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "PO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-
-                                }
-                                if (letter.equals("B")) {
-                                    int row = 1;
-                                    for (int i = 0; i < size_of_portaerei; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "PO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("C")) {
-                                    int row = 2;
-                                    for (int i = 0; i < size_of_portaerei; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "PO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-
-                                }
-                                if (letter.equals("D")) {
-                                    int row = 3;
-                                    for (int i = 0; i < size_of_portaerei; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "PO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-
-                                }
-                                if (letter.equals("E")) {
-                                    int row = 4;
-                                    for (int i = 0; i < size_of_portaerei; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "PO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("F")) {
-                                    int row = 5;
-                                    for (int i = 0; i < size_of_portaerei; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "PO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("G")) {
-                                    int row = 6;
-                                    for (int i = 0; i < size_of_portaerei; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "PO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-                                }
-                                if (letter.equals("H")) {
-                                    int row = 7;
-                                    for (int i = 0; i < size_of_portaerei; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "PO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("I")) {
-                                    int row = 8;
-                                    for (int i = 0; i < size_of_portaerei; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "PO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("L")) {
-                                    int row = 9;
-                                    for (int i = 0; i < size_of_portaerei; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "PO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-                                }
-                            } else {
-                                System.out.println("Insert the number of row");
-                                String letter = scanner.nextLine();
-                                System.out.println("Insert the column");
-                                int column = scanner.nextInt();
-                                if (letter.equals("A")) {
-                                    int row = 0;
-                                    for (int j1 = 0; j1 < size_of_portaerei; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "PO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("B")) {
-                                    int row = 1;
-                                    for (int j1 = 0; j1 < size_of_portaerei; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "PO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("C")) {
-                                    int row = 2;
-                                    for (int j1 = 0; j1 < size_of_portaerei; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "PO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("D")) {
-                                    int row = 3;
-                                    for (int j1 = 0; j1 < size_of_portaerei; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "PO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("E")) {
-                                    int row = 4;
-                                    for (int j1 = 0; j1 < size_of_portaerei; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "PO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("F")) {
-                                    int row = 5;
-                                    for (int j1 = 0; j1 < size_of_portaerei; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "PO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("G")) {
-                                    int row = 6;
-                                    for (int j1 = 0; j1 < size_of_portaerei; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "PO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("H")) {
-                                    int row = 7;
-                                    for (int j1 = 0; j1 < size_of_portaerei; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "PO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("I")) {
-                                    int row = 8;
-                                    for (int j1 = 0; j1 < size_of_portaerei; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "PO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-                                }
-                                if (letter.equals("L")) {
-                                    int row = 9;
-                                    for (int j1 = 0; j1 < size_of_portaerei; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "PO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-
-
-                            };
-                        }
-                        break;
-
-                    }
-
-                case CO:
-                    size = size_of_corazzate;
-                    for (int j = 0; j <= number_of_corazzate;) {
-
-                        if (bot) {
-                            System.out.println("SONO IN CO");
-
-                            //bot player
-                            if (value) {
-                                int rand_column = new Random().nextInt(9 - size);
-                                int rand_row = new Random().nextInt(9);
-                                if (!checkAvailability(rand_row, rand_column, size_of_corazzate, 'H')) {
-
-                                } else {
-                                    for (int i = 0; i < size; i++) {
-                                        gameBoard.setElementGameBoard(rand_row, rand_column, "CO");
-                                        rand_column++;
-                                    }
-                                    //this.gameBoard.getGameBoard();
-
-                                }
-
-                            } else {
-                                int rand_row = new Random().nextInt(9 - size);
-                                int rand_column = new Random().nextInt(9);
-                                if (!checkAvailability(rand_row, rand_column, size_of_corazzate, 'V')) {
-
-                                } else {
-                                    for (int i = 0; i < size; i++) {
-                                        gameBoard.setElementGameBoard(rand_row, rand_column, "CO");
-                                        rand_row++;
-                                    }
-                                    //this.gameBoard.getGameBoard();
-                                }
-
-                            }
-                        } else {
-                            //human player
-                            Scanner scanner = new Scanner(System.in);
-                            System.out.println("Insert H for Horizontal or V for Vertical");
-                            String position = scanner.nextLine();
-                            if (position.equals("V")) {
-                                System.out.println("Insert the number of row");
-                                String letter = scanner.nextLine();
-                                System.out.println("Insert the column");
-                                int column = scanner.nextInt();
-                                if (letter.equals("A")) {
-                                    int row = 0;
-                                    for (int i = 0; i < size_of_corazzate; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "CO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-                                }
-                                if (letter.equals("B")) {
-                                    int row = 1;
-                                    for (int i = 0; i < size_of_corazzate; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "CO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-
-                                }
-                                if (letter.equals("C")) {
-                                    int row = 2;
-                                    for (int i = 0; i < size_of_corazzate; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "CO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("D")) {
-                                    int row = 3;
-                                    for (int i = 0; i < size_of_corazzate; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "CO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-
-                                }
-                                if (letter.equals("E")) {
-                                    int row = 4;
-                                    for (int i = 0; i < size_of_corazzate; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "CO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-                                }
-                                if (letter.equals("F")) {
-                                    int row = 5;
-                                    for (int i = 0; i < size_of_corazzate; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "CO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-                                }
-                                if (letter.equals("G")) {
-                                    int row = 6;
-                                    for (int i = 0; i < size_of_corazzate; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "CO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("H")) {
-                                    int row = 7;
-                                    for (int i = 0; i < size_of_corazzate; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "CO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("I")) {
-                                    int row = 8;
-                                    for (int i = 0; i < size_of_corazzate; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "CO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("L")) {
-                                    int row = 9;
-                                    for (int i = 0; i < size_of_corazzate; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "CO");
-                                        row++;
-                                    }
-                                }
-                            } else {
-                                System.out.println("Insert the number of row");
-                                String letter = scanner.nextLine();
-                                System.out.println("Insert the column");
-                                int column = scanner.nextInt();
-                                if (letter.equals("A")) {
-                                    int row = 0;
-                                    for (int j1 = 0; j1 < size_of_corazzate; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "CO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-                                }
-                                if (letter.equals("B")) {
-                                    int row = 1;
-                                    for (int j1 = 0; j1 < size_of_corazzate; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "CO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("C")) {
-                                    int row = 2;
-                                    for (int j1 = 0; j1 < size_of_corazzate; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "CO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("D")) {
-                                    int row = 3;
-                                    for (int j1 = 0; j1 < size_of_corazzate; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "CO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("E")) {
-                                    int row = 4;
-                                    for (int j1 = 0; j1 < size_of_corazzate; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "CO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("F")) {
-                                    int row = 5;
-                                    for (int j1 = 0; j1 < size_of_corazzate; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "CO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("G")) {
-                                    int row = 6;
-                                    for (int j1 = 0; j1 < size_of_corazzate; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "CO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("H")) {
-                                    int row = 7;
-                                    for (int j1 = 0; j1 < size_of_corazzate; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "CO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("I")) {
-                                    int row = 8;
-                                    for (int j1 = 0; j1 < size_of_corazzate; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "CO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("L")) {
-                                    int row = 9;
-                                    for (int j1 = 0; j1 < size_of_corazzate; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "CO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-
-
-                            };
-                        }
-                        break;
-                    }
-                case CR:
-
-                    size = size_of_crociere;
-                    for (int j = 0; j < number_of_crociere; j++) {
-
-                        if (bot) {
-                            System.out.println("SONO IN CR");
-
-                            if (value) {
-                                int rand_column = new Random().nextInt(9 - size);
-                                int rand_row = new Random().nextInt(9);
-                                if (!checkAvailability(rand_row, rand_column, size_of_crociere, 'H')) {
-                                    break;
-                                } else {
-                                    for (int i = 0; i < size; i++) {
-
-                                        gameBoard.setElementGameBoard(rand_row, rand_column, "CR");
-                                        rand_column++;
-                                    }
-                                    //this.gameBoard.getGameBoard();
-                                }
-                            } else {
-                                int rand_row = new Random().nextInt(10 - size);
-                                int rand_column = new Random().nextInt(9);
-                                if (!checkAvailability(rand_row, rand_column, size_of_crociere, 'V')) {
-                                    break;
-                                } else {
-                                    for (int i = 0; i < size; i++) {
-                                        gameBoard.setElementGameBoard(rand_row, rand_column, "CR");
-                                        rand_row++;
-                                    }
-                                    //this.gameBoard.getGameBoard();
-                                }
-                            }
-                        } else {
-                            // human player
-                            Scanner scanner = new Scanner(System.in);
-                            System.out.println("Insert H for Horizontal or V for Vertical");
-                            String position = scanner.nextLine();
-                            if (position.equals("V")) {
-                                System.out.println("Insert the number of row");
-                                String letter = scanner.nextLine();
-                                System.out.println("Insert the column");
-                                int column = scanner.nextInt();
-                                if (letter.equals("A")) {
-                                    int row = 0;
-                                    for (int i = 0; i < size_of_crociere; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "CR");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("B")) {
-                                    int row = 1;
-                                    for (int i = 0; i < size_of_crociere; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "CR");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("C")) {
-                                    int row = 2;
-                                    for (int i = 0; i < size_of_crociere; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "CR");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("D")) {
-                                    int row = 3;
-                                    for (int i = 0; i < size_of_crociere; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "CR");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("E")) {
-                                    int row = 4;
-                                    for (int i = 0; i < size_of_crociere; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "CR");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("F")) {
-                                    int row = 5;
-                                    for (int i = 0; i < size_of_crociere; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "CR");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("G")) {
-                                    int row = 6;
-                                    for (int i = 0; i < size_of_crociere; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "CR");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("H")) {
-                                    int row = 7;
-                                    for (int i = 0; i < size_of_crociere; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "CR");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("I")) {
-                                    int row = 8;
-                                    for (int i = 0; i < size_of_crociere; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "CR");
-                                        row++;
-                                    }
-                                }
-                                if (letter.equals("L")) {
-                                    int row = 9;
-                                    for (int i = 0; i < size_of_crociere; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "CR");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                            } else {
-                                System.out.println("Insert the number of row");
-                                String letter = scanner.nextLine();
-                                System.out.println("Insert the column");
-                                int column = scanner.nextInt();
-                                if (letter.equals("A")) {
-                                    int row = 0;
-                                    for (int j1 = 0; j1 < size_of_crociere; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "CR");
-                                        column++;
-                                    }
-                                }
-                                if (letter.equals("B")) {
-                                    int row = 1;
-                                    for (int j1 = 0; j1 < size_of_crociere; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "CR");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-
-                                }
-                                if (letter.equals("C")) {
-                                    int row = 2;
-                                    for (int j1 = 0; j1 < size_of_crociere; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "CR");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("D")) {
-                                    int row = 3;
-                                    for (int j1 = 0; j1 < size_of_crociere; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "CR");
-                                        column++;
-                                    }
-
-                                }
-                                if (letter.equals("E")) {
-                                    int row = 4;
-                                    for (int j1 = 0; j1 < size_of_crociere; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "CR");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("F")) {
-                                    int row = 5;
-                                    for (int j1 = 0; j1 < size_of_crociere; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "CR");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("G")) {
-                                    int row = 6;
-                                    for (int j1 = 0; j1 < size_of_crociere; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "CR");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("H")) {
-                                    int row = 7;
-                                    for (int j1 = 0; j1 < size_of_crociere; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "CR");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("I")) {
-                                    int row = 8;
-                                    for (int j1 = 0; j1 < size_of_crociere; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "CR");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("L")) {
-                                    int row = 9;
-                                    for (int j1 = 0; j1 < size_of_crociere; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "CR");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-
-
-                            };
-                        }
-                        break;
-                    }
-                case SO:
-                    size = size_of_sottomarini;
-                    for (int j = 0; j < number_of_sottomarini; j++) {
-
-                        if (bot) {
-                            System.out.println("SONO IN SO");
-
-                            if (value) {
-                                int rand_column = new Random().nextInt(9 - size);
-                                int rand_row = new Random().nextInt(9);
-                                if (!checkAvailability(rand_row, rand_column, size_of_sottomarini, 'H')) {
-
-                                } else {
-                                    for (int i = 0; i < size; i++) {
-                                        gameBoard.setElementGameBoard(rand_row, rand_column, "SO");
-                                        rand_column++;
-                                    }
-                                    //this.gameBoard.getGameBoard();
-                                }
-
-                            } else {
-                                int rand_row = new Random().nextInt(9 - size);
-                                int rand_column = new Random().nextInt(9);
-                                if (!checkAvailability(rand_row, rand_column, size_of_sottomarini, 'V')) {
-
-                                } else {
-                                    for (int i = 0; i < size; i++) {
-                                        gameBoard.setElementGameBoard(rand_row, rand_column, "SO");
-                                        rand_row++;
-                                    }
-                                    //this.gameBoard.getGameBoard();
-                                }
-                            }
-                        } else {
-                            // human player
-                            Scanner scanner = new Scanner(System.in);
-                            System.out.println("Insert H for Horizontal or V for Vertical");
-                            String position = scanner.nextLine();
-                            if (position.equals("V")) {
-                                System.out.println("Insert the number of row");
-                                String letter = scanner.nextLine();
-                                System.out.println("Insert the column");
-                                int column = scanner.nextInt();
-                                if (letter.equals("A")) {
-                                    int row = 0;
-                                    for (int i = 0; i < size_of_sottomarini; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "SO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("B")) {
-                                    int row = 1;
-                                    for (int i = 0; i < size_of_sottomarini; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "SO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("C")) {
-                                    int row = 2;
-                                    for (int i = 0; i < size_of_sottomarini; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "SO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("D")) {
-                                    int row = 3;
-                                    for (int i = 0; i < size_of_sottomarini; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "SO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("E")) {
-                                    int row = 4;
-                                    for (int i = 0; i < size_of_sottomarini; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "SO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("F")) {
-                                    int row = 5;
-                                    for (int i = 0; i < size_of_sottomarini; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "SO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("G")) {
-                                    int row = 6;
-                                    for (int i = 0; i < size_of_sottomarini; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "SO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("H")) {
-                                    int row = 7;
-                                    for (int i = 0; i < size_of_sottomarini; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "SO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("I")) {
-                                    int row = 8;
-                                    for (int i = 0; i < size_of_sottomarini; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "SO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("L")) {
-                                    int row = 9;
-                                    for (int i = 0; i < size_of_sottomarini; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "SO");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                            } else {
-                                System.out.println("Insert the number of row");
-                                String letter = scanner.nextLine();
-                                System.out.println("Insert the column");
-                                int column = scanner.nextInt();
-                                if (letter.equals("A")) {
-                                    int row = 0;
-                                    for (int j1 = 0; j1 < size_of_sottomarini; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "SO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("B")) {
-                                    int row = 1;
-                                    for (int j1 = 0; j1 < size_of_sottomarini; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "SO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("C")) {
-                                    int row = 2;
-                                    for (int j1 = 0; j1 < size_of_sottomarini; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "SO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("D")) {
-                                    int row = 3;
-                                    for (int j1 = 0; j1 < size_of_sottomarini; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "SO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("E")) {
-                                    int row = 4;
-                                    for (int j1 = 0; j1 < size_of_sottomarini; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "SO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-
-                                }
-                                if (letter.equals("F")) {
-                                    int row = 5;
-                                    for (int j1 = 0; j1 < size_of_sottomarini; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "SO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("G")) {
-                                    int row = 6;
-                                    for (int j1 = 0; j1 < size_of_sottomarini; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "SO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("H")) {
-                                    int row = 7;
-                                    for (int j1 = 0; j1 < size_of_sottomarini; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "SO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("I")) {
-                                    int row = 8;
-                                    for (int j1 = 0; j1 < size_of_sottomarini; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "SO");
-                                        column++;
-                                    }
-
-                                }
-                                if (letter.equals("L")) {
-                                    int row = 9;
-                                    for (int j1 = 0; j1 < size_of_sottomarini; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "SO");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-                                }
-                            };
-                        }
-
-                        break;
-                    }
-
-                case NA:
-                    size = size_of_assalto;
-
-                    for (int j = 0; j <= number_of_assalto; j++) {
-
-                        if (bot) {
-
-                            if (value) {
-                                int rand_column = new Random().nextInt(9 - size);
-                                int rand_row = new Random().nextInt(9);
-                                if (!checkAvailability(rand_row, rand_column, size_of_assalto, 'H')) {
-
-                                } else {
-                                    for (int i = 0; i < size; i++) {
-                                        gameBoard.setElementGameBoard(rand_row, rand_column, "NA");
-                                        rand_column++;
-                                    }
-                                    //this.gameBoard.getGameBoard();
-                                }
-
-                            } else {
-                                int rand_row = new Random().nextInt(9 - size);
-                                int rand_column = new Random().nextInt(9);
-                                if (!checkAvailability(rand_row, rand_column, size_of_assalto, 'V')) {
-
-                                } else {
-                                    for (int i = 0; i < size; i++) {
-                                        gameBoard.setElementGameBoard(rand_row, rand_column, "NA");
-                                        rand_row++;
-                                    }
-                                    //this.gameBoard.getGameBoard();
-                                }
-                            }
-                        } else {
-                            //human player
-                            Scanner scanner = new Scanner(System.in);
-                            System.out.println("Insert H for Horizontal or V for Vertical");
-                            String position = scanner.nextLine();
-                            if (position.equals("V")) {
-                                System.out.println("Insert the number of row");
-                                String letter = scanner.nextLine();
-                                System.out.println("Insert the column");
-                                int column = scanner.nextInt();
-                                if (letter.equals("A")) {
-                                    int row = 0;
-                                    for (int i = 0; i < size_of_assalto; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "NA");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-
-                                }
-                                if (letter.equals("B")) {
-                                    int row = 1;
-                                    for (int i = 0; i < size_of_assalto; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "NA");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("C")) {
-                                    int row = 2;
-                                    for (int i = 0; i < size_of_assalto; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "NA");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("D")) {
-                                    int row = 3;
-                                    for (int i = 0; i < size_of_assalto; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "NA");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("E")) {
-                                    int row = 4;
-                                    for (int i = 0; i < size_of_assalto; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "NA");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("F")) {
-                                    int row = 5;
-                                    for (int i = 0; i < size_of_assalto; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "NA");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("G")) {
-                                    int row = 6;
-                                    for (int i = 0; i < size_of_assalto; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "N");
-                                        row++;
-                                    }
-                                }
-                                if (letter.equals("H")) {
-                                    int row = 7;
-                                    for (int i = 0; i < size_of_assalto; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "NA");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("I")) {
-                                    int row = 8;
-                                    for (int i = 0; i < size_of_assalto; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "NA");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("L")) {
-                                    int row = 9;
-                                    for (int i = 0; i < size_of_assalto; i++) {
-                                        gameBoard.setElementGameBoard(row, column, "NA");
-                                        row++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-                                }
-                            } else {
-                                System.out.println("Insert the number of row");
-                                String letter = scanner.nextLine();
-                                System.out.println("Insert the column");
-                                int column = scanner.nextInt();
-                                if (letter.equals("A")) {
-                                    int row = 0;
-                                    for (int j1 = 0; j1 < size_of_assalto; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "NA");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("B")) {
-                                    int row = 1;
-                                    for (int j1 = 0; j1 < size_of_assalto; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "NA");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-                                }
-                                if (letter.equals("C")) {
-                                    int row = 2;
-                                    for (int j1 = 0; j1 < size_of_assalto; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "NA");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-                                }
-                                if (letter.equals("D")) {
-                                    int row = 3;
-                                    for (int j1 = 0; j1 < size_of_assalto; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "NA");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-                                }
-                                if (letter.equals("E")) {
-                                    int row = 4;
-                                    for (int j1 = 0; j1 < size_of_assalto; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "NA");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-                                }
-                                if (letter.equals("F")) {
-                                    int row = 5;
-                                    for (int j1 = 0; j1 < size_of_assalto; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "NA");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-                                }
-                                if (letter.equals("G")) {
-                                    int row = 6;
-                                    for (int j1 = 0; j1 < size_of_assalto; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "NA");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("H")) {
-                                    int row = 7;
-                                    for (int j1 = 0; j1 < size_of_assalto; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "NA");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-
-                                }
-                                if (letter.equals("I")) {
-                                    int row = 8;
-                                    for (int j1 = 0; j1 < size_of_assalto; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "NA");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-                                }
-                                if (letter.equals("L")) {
-                                    int row = 9;
-                                    for (int j1 = 0; j1 < size_of_sottomarini; j1++) {
-                                        gameBoard.setElementGameBoard(row, column, "NA");
-                                        column++;
-                                    }
-                                    this.gameBoard.getGameBoard();
-                                }
-                            };
-
-                        }
-                        break;
-                    }
-                default:
-            }
-        }
+    
+ public List<List<Integer>> listOfAvailableCells(int number_of_cell,String direction){
+   	
+    	
+    	List<List<Integer>> available_cell = new ArrayList<>();
+    	for(int i=0;i<10;i++) {
+    		for(int j =0;j<10;j++) {
+    			int temp=0;
+    			for(int n=0;n<number_of_cell;n++) {
+    				try {
+    					if(direction == "O") {
+    						if(this.gameBoard.gameBoard[i][j+n] != "~~") {
+    							break;
+    						}else {
+    							temp++;
+    						}
+    					}else {
+    						if(this.gameBoard.gameBoard[i+n][j]  != "~~") {
+    							break;
+    						}else {
+    							temp++;
+    						}
+    					}
+    				}catch(Exception e) {
+    					
+    				}
+    				
+    				
+    			}
+    			if(temp==number_of_cell) {
+    
+    				available_cell.add(Arrays.asList(i,j));
+    	
+    			}
+    			
+    		}
+    	}
+    	return available_cell;
     }
+       
+    
+    
+
+    public void setGameBoard(GameBoard gameBoard) {
+    	Random rand = new Random();
+        if(!this.bot) {
+        	// player is a bot
+        	System.out.println("sono in bot");
+        	ArrayList<String> directionList = new ArrayList();
+        	directionList.add("O");
+        	directionList.add("V");
+        	for(Navi boat: Navi.values()) {
+        		if(boat.name().equals("PO")) {
+        
+        			for(int number_of_boats =0;number_of_boats<number_of_portaerei;number_of_boats++) {
+        				String direction = directionList.get(rand.nextInt(directionList.size()));
+        				List<List<Integer>> available_cell =this.listOfAvailableCells(size_of_portaerei, direction);
+        				//System.out.println(available_cell);
+        				if(direction.equals("O")) {
+        					List<Integer> list_of_cell = available_cell.get(rand.nextInt(available_cell.size()));;
+        					        					
+        					for(int size_of_boat=0;size_of_boat<size_of_portaerei;size_of_boat++) {
+        						this.gameBoard.setElementGameBoard(list_of_cell.get(0),list_of_cell.get(1)+size_of_boat, boat.name());  
+        	
+            				}
+        					
+        				}else {
+        					int row = rand.nextInt(10-size_of_portaerei);
+        					int column = rand.nextInt(10); 
+        					List<Integer> list_of_cell = available_cell.get(rand.nextInt(available_cell.size()));;
+        					System.out.println(list_of_cell);
+        					for(int size_of_boat=0;size_of_boat<size_of_portaerei;size_of_boat++) {
+        						this.gameBoard.setElementGameBoard(list_of_cell.get(0)+size_of_boat, list_of_cell.get(1), boat.name());  
+        				   						
+        					}
+        				}
+        				
+        			}
+        		}
+        		if(boat.name().equals("CO")) {
+        	        
+        			for(int number_of_boats =0;number_of_boats<number_of_corazzate;number_of_boats++) {
+        	
+        				String direction = directionList.get(rand.nextInt(directionList.size()));
+        				List<List<Integer>> available_cell =this.listOfAvailableCells(size_of_corazzate, direction);
+        				if(direction.equals("O")) {
+        					int row = rand.nextInt(10);
+        					int column = rand.nextInt(10-size_of_corazzate); 
+        					List<Integer> list_of_cell = available_cell.get(rand.nextInt(available_cell.size()));;
+        					for(int size_of_boat=0;size_of_boat<size_of_corazzate;size_of_boat++) {
+        						this.gameBoard.setElementGameBoard(list_of_cell.get(0),list_of_cell.get(1)+size_of_boat, boat.name());  
+        						
+            				}
+        					
+        				}else {
+        					int row = rand.nextInt(10-size_of_corazzate);
+        					int column = rand.nextInt(10); 
+        					List<Integer> list_of_cell = available_cell.get(rand.nextInt(available_cell.size()));;
+        					for(int size_of_boat=0;size_of_boat<size_of_corazzate;size_of_boat++) {
+        						this.gameBoard.setElementGameBoard(list_of_cell.get(0)+size_of_boat, list_of_cell.get(1), boat.name());   						
+        					}
+        				}
+        				
+        			}
+        		}
+        		if(boat.name().equals("CR")) {
+        	        
+        			for(int number_of_boats =0;number_of_boats<number_of_crociere;number_of_boats++) {
+        	
+        				String direction = directionList.get(rand.nextInt(directionList.size()));;
+        				List<List<Integer>> available_cell =this.listOfAvailableCells(size_of_crociere, direction);
+        				if(direction.equals("O")) {
+        					int row = rand.nextInt(10);
+        					int column = rand.nextInt(10-size_of_crociere);      
+        					List<Integer> list_of_cell = available_cell.get(rand.nextInt(available_cell.size()));;
+
+        					for(int size_of_boat=0;size_of_boat<size_of_crociere;size_of_boat++) {
+        						this.gameBoard.setElementGameBoard(list_of_cell.get(0),list_of_cell.get(1)+size_of_boat, boat.name());  
+        						
+            				}
+        					
+        				}else {
+        					int row = rand.nextInt(10-size_of_crociere);
+        					int column = rand.nextInt(10); 
+        					List<Integer> list_of_cell = available_cell.get(rand.nextInt(available_cell.size()));;
+
+        					for(int size_of_boat=0;size_of_boat<size_of_crociere;size_of_boat++) {
+        						this.gameBoard.setElementGameBoard(list_of_cell.get(0)+size_of_boat, list_of_cell.get(1), boat.name());   						
+        						      						
+        					}
+        				}
+        				
+        			}
+        		}
+        		if(boat.name().equals("SO")) {
+          			for(int number_of_boats =0;number_of_boats<number_of_sottomarini;number_of_boats++) {
+          	        	
+        				String direction = directionList.get(rand.nextInt(directionList.size()));
+        				List<List<Integer>> available_cell =this.listOfAvailableCells(size_of_sottomarini, direction);
+
+        				if(direction.equals("O")) {
+        					int row = rand.nextInt(10);
+        					int column = rand.nextInt(10-size_of_sottomarini); 
+        					List<Integer> list_of_cell = available_cell.get(rand.nextInt(available_cell.size()));;
+
+        					for(int size_of_boat=0;size_of_boat<size_of_sottomarini;size_of_boat++) {
+        						this.gameBoard.setElementGameBoard(list_of_cell.get(0),list_of_cell.get(1)+size_of_boat, boat.name());  
+        						column++;
+            				}
+        					
+        				}else {
+        					int row = rand.nextInt(10-size_of_sottomarini);
+        					int column = rand.nextInt(10); 
+        					List<Integer> list_of_cell = available_cell.get(rand.nextInt(available_cell.size()));;
+
+        					for(int size_of_boat=0;size_of_boat<size_of_sottomarini;size_of_boat++) {
+        						this.gameBoard.setElementGameBoard(list_of_cell.get(0)+size_of_boat, list_of_cell.get(1), boat.name());   						
+
+        	
+        						row++;        						
+        					}
+        				}
+        				
+        			}
+        			
+        		}if(boat.name().equals("NA")) {
+          			for(int number_of_boats =0;number_of_boats<number_of_assalto;number_of_boats++) {
+          				
+          	        	
+        				String direction = directionList.get(rand.nextInt(directionList.size()));;
+        				List<List<Integer>> available_cell =this.listOfAvailableCells(size_of_assalto, direction);
+
+        				if(direction.equals("O")) {
+        					int row = rand.nextInt(10);
+        					int column = rand.nextInt(10-size_of_assalto);   
+        					List<Integer> list_of_cell = available_cell.get(rand.nextInt(available_cell.size()));;
+
+        					for(int size_of_boat=0;size_of_boat<size_of_assalto;size_of_boat++) {
+        						this.gameBoard.setElementGameBoard(list_of_cell.get(0),list_of_cell.get(1)+size_of_boat, boat.name());  
+        						column++;
+            				}
+        					
+        				}else {
+        					int row = rand.nextInt(10-size_of_assalto);
+        					int column = rand.nextInt(10); 
+        					List<Integer> list_of_cell = available_cell.get(rand.nextInt(available_cell.size()));;
+
+        					for(int size_of_boat=0;size_of_boat<size_of_assalto;size_of_boat++) {
+        						this.gameBoard.setElementGameBoard(list_of_cell.get(0)+size_of_boat, list_of_cell.get(1), boat.name());   						
+        						row++;        						
+        					}
+        				}
+        				
+        			}
+        			
+        		}
+        	}
+        }else {
+        	
+        	//player
+        	
+        }
+
+        }
 }
