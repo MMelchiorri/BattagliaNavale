@@ -4,7 +4,7 @@ public class GameBoard {
 	
 	public String[][] gameBoard;
 		
-	private char[] letter = {'A','B','C','D','E','F','G','H','I','L'}; //row letter
+	private char[] letter = {'A','B','C','D','E','F','G','H','I','J'}; //row letter
 	private int[] number = {1,2,3,4,5,6,7,8,9,10};					   //column number
 	
 	public GameBoard(int rows,int columns) {

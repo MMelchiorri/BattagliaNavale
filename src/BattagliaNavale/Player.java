@@ -45,31 +45,7 @@ public class Player {
         gameBoard.getGameBoard();
     }
 
-    public boolean checkAvailability(int row, int column, int size, String direction) {
 
-        if (direction.equals("V")) {
-            for (int i = 0; i < size; i++) {
-                if (this.gameBoard.gameBoard[row][column] != "~~") {
-                    return false;
-                }
-
-                row++;
-            }
-            return true;
-        } else {
-
-            for (int i = 0; i < size; i++) {
-                if (this.gameBoard.gameBoard[row][column] != "~~") {
-                    return false;
-                }
-                column++;
-            }
-
-            return true;
-
-        }
-    }
-    
  public List<List<Integer>> listOfAvailableCells(int number_of_cell,String direction){
    	
     	
@@ -269,7 +245,32 @@ public class Player {
         }else {
         	
         	//player
+        	ArrayList<String> directionList = new ArrayList();
+        	directionList.add("O");
+        	directionList.add("V");
+        	Scanner in = new Scanner(System.in);
         	
+        	System.out.println("Inserisci la posizione in cui vuoi inserire tra Orizzonatel(O) o verticale (V)");
+     
+        	String position = in.nextLine();
+        	while(!directionList.contains(position)) {
+            	System.out.println("Inserisci un valore valido");
+            	position = in.nextLine();
+
+        	}
+        	
+        	System.out.println("Inserisci le coordinate");
+        	String coord = in.nextLine();
+        	int firstValue = (int) coord.charAt(0);
+        	int secondValue = (int) coord.charAt(1);
+        	while( (firstValue < 65 || secondValue>74) && (secondValue>10) ) {
+            	System.out.println("Inserisci un valore valido");
+            	coord = in.nextLine();
+            	firstValue = (int) coord.charAt(0);
+            	secondValue = (int) coord.charAt(1);
+        		
+        	}
+
         }
 
         }

@@ -12,14 +12,17 @@ public class Game {
 		Player player = new Player(playerGameBoard,true);
 		Player bot = new Player(cpuGameBoard,false);
 		
+
+		
+
+
+		player.setGameBoard(playerGameBoard);
 		System.out.println("                    CPU BOARD                     ");
 		bot.setGameBoard(cpuGameBoard);
 		bot.getGameBoard(cpuGameBoard);
-		
 		System.out.println("-----------------------------------------------------");
 		System.out.println("                    PLAYER BOARD                     ");
 		player.getGameBoard(playerGameBoard);
-		//player.setGameBoard(playerGameBoard,false);
 	}
 		
 		
