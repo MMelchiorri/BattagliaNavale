@@ -1,5 +1,6 @@
 package BattagliaNavale;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -262,10 +263,11 @@ public class Player {
                         System.out.println(coord);
                         int firstValue = (int) coord.charAt(0);
                         String secondValue = coord.substring(1, coord.length());
+                        System.out.println(secondValue instanceof String);
           
                         List < List < Integer >> available_cell = this.listOfAvailableCells(size_of_portaerei, direction);
-                        while(!available_cell.contains(Arrays.asList(9 - firstValue + 65,secondValue))) {
-                        	System.out.println("sono in false");
+                        
+                        while(!available_cell.contains(Arrays.asList(9 - firstValue + 65,Integer.parseInt(secondValue)))) {
                             System.out.println("Inserisci le coordinate");
                             coord = in.nextLine();
                             System.out.println(coord);
@@ -278,28 +280,25 @@ public class Player {
                             System.out.println(coord);
                             firstValue = (int) coord.charAt(0);
                             secondValue = coord.substring(1, coord.length());
-                            System.out.println(Arrays.asList(9 - firstValue + 65,secondValue));
-
 
                         }
                         if (direction.equals("O")) {
                             for (int size_of_boat = 0; size_of_boat < size_of_portaerei; size_of_boat++) {
                                 this.gameBoard.setElementGameBoard(9 - firstValue + 65, Integer.parseInt(secondValue) + size_of_boat, boat.name());
-                                this.gameBoard.getGameBoard();
 
 
                             }
                         } else {
                             for (int size_of_boat = 0; size_of_boat < size_of_portaerei; size_of_boat++) {
                                 this.gameBoard.setElementGameBoard(9 - firstValue + 65 + size_of_boat, Integer.parseInt(secondValue), boat.name());
-                                this.gameBoard.getGameBoard();
+                                
 
                             }
 
                         }
 
                     }
-
+                    this.gameBoard.getGameBoard();
 
                 }
                 if (nave.equals("CO")) {
