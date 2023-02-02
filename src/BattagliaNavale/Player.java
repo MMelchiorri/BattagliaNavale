@@ -48,18 +48,17 @@ public class Player {
 
 
     public List < List < Integer >> listOfAvailableCells(int number_of_cell, String direction) {
-
-
         List < List < Integer >> available_cell = new ArrayList < > ();
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 int temp = 0;
                 for (int n = 0; n < number_of_cell; n++) {
                     try {
-                        if (direction == "O") {
+                        if (direction.equals("O")) {
                             if (this.gameBoard.gameBoard[i][j + n] != "~~") {
                                 break;
                             } else {
+                   
                                 temp++;
                             }
                         } else {
@@ -70,7 +69,7 @@ public class Player {
                             }
                         }
                     } catch (Exception e) {
-
+                   
                     }
 
 
@@ -250,7 +249,7 @@ public class Player {
                 if (nave.equals("PO")) {
 
                     for (int number_of_boat = 0; number_of_boat < number_of_portaerei; number_of_boat++) {
-                        System.out.println("Inserisci la direzione in cui vuoi inserire tra Orizzonatel(O) o Verticale (V)");
+                        System.out.println("Inserisci la direzione in cui vuoi inserire tra Orizzontale(O) o Verticale (V)");
 
                         String direction = in .nextLine();
                         while (!directionList.contains(direction)) {
@@ -258,18 +257,21 @@ public class Player {
                             direction = in .nextLine();
 
                         }
+                        List < List < Integer >> available_cell = this.listOfAvailableCells(size_of_portaerei, direction);
+                        System.out.println(available_cell);
                         System.out.println("Inserisci le coordinate");
-                        String coord = in.nextLine();
+                        String coord = in .nextLine();
                         System.out.println(coord);
                         int firstValue = (int) coord.charAt(0);
                         String secondValue = coord.substring(1, coord.length());
-                        System.out.println(secondValue instanceof String);
-          
-                        List < List < Integer >> available_cell = this.listOfAvailableCells(size_of_portaerei, direction);
-                        
-                        while(!available_cell.contains(Arrays.asList(9 - firstValue + 65,Integer.parseInt(secondValue)))) {
+                        System.out.println(firstValue);
+                        System.out.println(secondValue);
+                       
+                        System.out.println(Arrays.asList(9 - firstValue + 65, Integer.parseInt(secondValue)));
+
+                        while (!available_cell.contains(Arrays.asList(9 - firstValue + 65, Integer.parseInt(secondValue)))) {
                             System.out.println("Inserisci le coordinate");
-                            coord = in.nextLine();
+                            coord = in .nextLine();
                             System.out.println(coord);
                             firstValue = (int) coord.charAt(0);
                             secondValue = coord.substring(1, coord.length());
@@ -291,7 +293,7 @@ public class Player {
                         } else {
                             for (int size_of_boat = 0; size_of_boat < size_of_portaerei; size_of_boat++) {
                                 this.gameBoard.setElementGameBoard(9 - firstValue + 65 + size_of_boat, Integer.parseInt(secondValue), boat.name());
-                                
+
 
                             }
 
@@ -302,7 +304,6 @@ public class Player {
 
                 }
                 if (nave.equals("CO")) {
-                    System.out.println("Inserisci la direzione in cui vuoi inserire tra Orizzonatel(O) o Verticale (V)");
                     for (int number_of_boat = 0; number_of_boat < number_of_corazzate; number_of_boat++) {
                         System.out.println("Inserisci la direzione in cui vuoi inserire tra Orizzonatel(O) o Verticale (V)");
 
@@ -312,6 +313,7 @@ public class Player {
                             direction = in .nextLine();
 
                         }
+                        List < List < Integer >> available_cell = this.listOfAvailableCells(size_of_corazzate, direction);
                         System.out.println("Inserisci le coordinate");
                         String coord = in .nextLine();
                         System.out.println(coord);
@@ -319,6 +321,17 @@ public class Player {
                         String secondValue = coord.substring(1, coord.length());
                         System.out.println(firstValue);
                         System.out.println(secondValue);
+
+                        System.out.println(available_cell);
+                        System.out.println(Arrays.asList(9 - firstValue + 65, Integer.parseInt(secondValue)));
+
+                        while (!available_cell.contains(Arrays.asList(9 - firstValue + 65, Integer.parseInt(secondValue)))) {
+                            System.out.println("Inserisci le coordinate");
+                            coord = in .nextLine();
+                            System.out.println(coord);
+                            firstValue = (int) coord.charAt(0);
+                            secondValue = coord.substring(1, coord.length());
+                        }
                         while ((firstValue < 65 || firstValue > 74) && (Integer.parseInt(secondValue) > 10)) {
                             System.out.println("Inserisci un valore valido");
                             coord = in .nextLine();
@@ -347,7 +360,7 @@ public class Player {
                 }
 
                 if (nave.equals("CR")) {
-    
+
                     for (int number_of_boat = 0; number_of_boat < number_of_crociere; number_of_boat++) {
                         System.out.println("Inserisci la direzione in cui vuoi inserire tra Orizzonatel(O) o Verticale (V)");
 
@@ -364,6 +377,15 @@ public class Player {
                         String secondValue = coord.substring(1, coord.length());
                         System.out.println(firstValue);
                         System.out.println(secondValue);
+                        List < List < Integer >> available_cell = this.listOfAvailableCells(size_of_crociere, direction);
+
+                        while (!available_cell.contains(Arrays.asList(9 - firstValue + 65, Integer.parseInt(secondValue)))) {
+                            System.out.println("Inserisci le coordinate");
+                            coord = in .nextLine();
+                            System.out.println(coord);
+                            firstValue = (int) coord.charAt(0);
+                            secondValue = coord.substring(1, coord.length());
+                        }
                         while ((firstValue < 65 || firstValue > 74) && (Integer.parseInt(secondValue) > 10)) {
                             System.out.println("Inserisci un valore valido");
                             coord = in .nextLine();
@@ -396,7 +418,7 @@ public class Player {
 
 
                 if (nave.equals("SO")) {
-       
+
                     for (int number_of_boat = 0; number_of_boat < number_of_sottomarini; number_of_boat++) {
                         System.out.println("Inserisci la direzione in cui vuoi inserire tra Orizzonatel(O) o Verticale (V)");
 
@@ -413,6 +435,15 @@ public class Player {
                         String secondValue = coord.substring(1, coord.length());
                         System.out.println(firstValue);
                         System.out.println(secondValue);
+                        List < List < Integer >> available_cell = this.listOfAvailableCells(size_of_sottomarini, direction);
+
+                        while (!available_cell.contains(Arrays.asList(9 - firstValue + 65, Integer.parseInt(secondValue)))) {
+                            System.out.println("Inserisci le coordinate");
+                            coord = in .nextLine();
+                            System.out.println(coord);
+                            firstValue = (int) coord.charAt(0);
+                            secondValue = coord.substring(1, coord.length());
+                        }
                         while ((firstValue < 65 || firstValue > 74) && (Integer.parseInt(secondValue) > 10)) {
                             System.out.println("Inserisci un valore valido");
                             coord = in .nextLine();
@@ -460,6 +491,15 @@ public class Player {
                         String secondValue = coord.substring(1, coord.length());
                         System.out.println(firstValue);
                         System.out.println(secondValue);
+                        List < List < Integer >> available_cell = this.listOfAvailableCells(size_of_assalto, direction);
+
+                        while (!available_cell.contains(Arrays.asList(9 - firstValue + 65, Integer.parseInt(secondValue)))) {
+                            System.out.println("Inserisci le coordinate");
+                            coord = in .nextLine();
+                            System.out.println(coord);
+                            firstValue = (int) coord.charAt(0);
+                            secondValue = coord.substring(1, coord.length());
+                        }
                         while ((firstValue < 65 || firstValue > 74) && (Integer.parseInt(secondValue) > 10)) {
                             System.out.println("Inserisci un valore valido");
                             coord = in .nextLine();
@@ -494,4 +534,3 @@ public class Player {
 
     }
 }
-    
