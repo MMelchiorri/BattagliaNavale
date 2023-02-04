@@ -1,10 +1,9 @@
 package BattagliaNavale;
 
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -95,7 +94,7 @@ public class Player {
         Random rand = new Random();
         if (!this.bot) {
             // player is a bot
-            ArrayList < String > directionList = new ArrayList();
+            ArrayList < String > directionList = new ArrayList<String>();
             directionList.add("O");
             directionList.add("V");
             for (Navi boat: Navi.values()) {
@@ -150,7 +149,7 @@ public class Player {
 
                     for (int number_of_boats = 0; number_of_boats < number_of_crociere; number_of_boats++) {
 
-                        String direction = directionList.get(rand.nextInt(directionList.size()));;
+                        String direction = directionList.get(rand.nextInt(directionList.size()));
                         List < List < Integer >> available_cell = this.listOfAvailableCells(size_of_crociere, direction);
                         if (direction.equals("O")) {
                             List < Integer > list_of_cell = available_cell.get(rand.nextInt(available_cell.size()));;
@@ -231,7 +230,7 @@ public class Player {
         } else {
 
             //player
-            ArrayList < String > directionList = new ArrayList();
+            ArrayList < String > directionList = new ArrayList<String>();
             directionList.add("O");
             directionList.add("V");
 
@@ -503,8 +502,10 @@ public class Player {
 
 
                 }
+                in.close();
 
             }
+            
         }
 
     }

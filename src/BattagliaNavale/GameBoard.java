@@ -6,8 +6,6 @@ public class GameBoard {
 	public String[][] gameBoard;
 	
 	private char[] letter = {'J','I','H','G','F','E','D','C','B','A'}; //row letter
-	private int[] number = {1,2,3,4,5,6,7,8,9,10};					   //column number
-	
 	public GameBoard(int rows,int columns) {
 		this.gameBoard = new String[rows][columns];
 		for(int i =0; i<rows;i++) {

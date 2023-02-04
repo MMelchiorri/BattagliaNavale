@@ -1,9 +1,6 @@
 package BattagliaNavale;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Scanner;
@@ -70,6 +67,7 @@ public class Game {
             int firstValue = (int) target.charAt(0);
             String secondValue = target.substring(1, target.length());
             String boat = cpuGameBoard.gameBoard[9-firstValue+65][Integer.parseInt(secondValue)];
+			input.close();
 
 			nave_colpita = bot.checkNaveColpita(9-firstValue+65, Integer.parseInt(secondValue));
 			if(nave_colpita) {
@@ -99,7 +97,7 @@ public class Game {
 			int col = rand.nextInt(10);
 			nave_colpita = player.checkNaveColpita(row, col);
 			if(nave_colpita) {
-				int elem = botNav.get(boat);
+				int elem = playerNav.get(boat);
 				elem--;
 				playerNav.put(boat, elem);
 				
